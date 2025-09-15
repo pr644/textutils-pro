@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"; 
+import { HashRouter as Router, Routes, Route } from "react-router-dom"; 
 import Navbar from "./components/Navbar";
 import TextForm from "./components/TextForm";
 import About from "./components/About";
@@ -34,24 +34,20 @@ function App() {
     }
   };
 
-  
+ 
   const handleColorChange = (event) => {
     const color = event.target.value;
-    
     document.body.style.background = `linear-gradient(135deg, ${color}, #000)`;
     showAlert(`Theme color changed to ${color}`, "success");
   };
 
-
   
-useEffect(() => {
-  const favicon = document.getElementById("favicon");
-  if (favicon) {
-    favicon.href = mode === "dark" ? "/favicon-dark.png" : "/favicon-light.png";
-  }
-}, [mode]);
-
-
+  useEffect(() => {
+    const favicon = document.getElementById("favicon");
+    if (favicon) {
+      favicon.href = mode === "dark" ? "/favicon-dark.png" : "/favicon-light.png";
+    }
+  }, [mode]);
 
   return (
     <Router>
@@ -61,7 +57,6 @@ useEffect(() => {
         btnText="Submit"
         mode={mode}
         toggleMode={toggleMode}
-       
         onColorChange={handleColorChange}
       />
 
@@ -74,9 +69,8 @@ useEffect(() => {
             element={
               <TextForm
                 showAlert={showAlert}
-                heading="try textUtils - word counter, character counter, remove extra spaces"
+                heading="Try TextUtils - word counter, character counter, remove extra spaces"
                 mode={mode}
-                
               />
             }
           />
